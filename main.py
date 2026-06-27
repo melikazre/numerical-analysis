@@ -1,5 +1,3 @@
-# اجرای همه بخش‌های پروژه ۳
-
 from pathlib import Path
 import runpy
 

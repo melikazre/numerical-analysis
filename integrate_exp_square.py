@@ -1,5 +1,3 @@
-# انتگرال e^(x²) روی (0, 1) — پروژه ۳، بخش ۳
-
 import numpy as np
 from numpy.polynomial.legendre import leggauss
 from scipy import integrate
@@ -42,30 +40,30 @@ if __name__ == "__main__":
     start, end = 0.0, 1.0
     pieces = 1000
 
-    print("بخش ۳ — انتگرال‌گیری f(x) = e^(x²) در بازه (0, 1)\n")
+    print("Part 3 - integrating f(x) = e^(x^2) on (0, 1)\n")
 
     by_trapezoid = trapezoid_rule(start, end, pieces)
     by_simpson = simpson_rule(start, end, pieces)
     by_gauss = gauss_quadrature(start, end, points=10)
     reference, _ = integrate.quad(f, start, end)
 
-    print(f"ذوزنقه‌ای (n={pieces}):     {by_trapezoid:.10f}")
-    print(f"سیمسون (n={pieces}):        {by_simpson:.10f}")
-    print(f"گاوس (۱۰ نقطه):            {by_gauss:.10f}")
-    print(f"مقدار مرجع (scipy):         {reference:.10f}")
+    print(f"Trapezoidal (n={pieces}):  {by_trapezoid:.10f}")
+    print(f"Simpson (n={pieces}):       {by_simpson:.10f}")
+    print(f"Gauss (10 points):          {by_gauss:.10f}")
+    print(f"Reference (scipy):          {reference:.10f}")
 
-    print("\nخطا نسبت به مقدار مرجع:")
-    print(f"  ذوزنقه‌ای: {abs(by_trapezoid - reference):.2e}")
-    print(f"  سیمسون:    {abs(by_simpson - reference):.2e}")
-    print(f"  گاوس:      {abs(by_gauss - reference):.2e}")
+    print("\nError vs reference:")
+    print(f"  trapezoidal: {abs(by_trapezoid - reference):.2e}")
+    print(f"  simpson:     {abs(by_simpson - reference):.2e}")
+    print(f"  gauss:       {abs(by_gauss - reference):.2e}")
 
     output_file = results / "integration_results.txt"
     with open(output_file, "w", encoding="utf-8") as file:
-        file.write("نتایج انتگرال e^(x²) در [0, 1]\n")
+        file.write("Integral of e^(x^2) on [0, 1]\n")
         file.write("-" * 40 + "\n")
-        file.write(f"ذوزنقه‌ای: {by_trapezoid:.10f}\n")
-        file.write(f"سیمسون:    {by_simpson:.10f}\n")
-        file.write(f"گاوس:      {by_gauss:.10f}\n")
-        file.write(f"مرجع:      {reference:.10f}\n")
+        file.write(f"Trapezoidal: {by_trapezoid:.10f}\n")
+        file.write(f"Simpson:     {by_simpson:.10f}\n")
+        file.write(f"Gauss:       {by_gauss:.10f}\n")
+        file.write(f"Reference:   {reference:.10f}\n")
 
-    print(f"\nنتایج ذخیره شد: {output_file}")
+    print(f"\nResults saved to: {output_file}")

@@ -1,22 +1,17 @@
-# Lagrange and spline interpolation — Project 3, Part 1
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.interpolate import CubicSpline, lagrange
 import sympy as sp
 from pathlib import Path
 
-# where plots get saved
 results = Path(__file__).parent / "results"
 results.mkdir(exist_ok=True)
 
-# given data points
 x_data = np.array([1, 2, 3, 4, 5, 6], dtype=float)
 y_data = np.array([1, 3, 5, 8, 5, 2], dtype=float)
 
 
 def get_lagrange_formula():
-    """Build the exact Lagrange polynomial with sympy."""
     x = sp.Symbol("x")
     n = len(x_data)
     polynomial = 0
@@ -32,7 +27,6 @@ def get_lagrange_formula():
 
 
 def show_spline_pieces():
-    """Print each piece of the natural cubic spline."""
     spline = CubicSpline(x_data, y_data, bc_type="natural")
     pieces = []
 
@@ -72,7 +66,7 @@ def draw_plot():
 
 
 if __name__ == "__main__":
-    print("Part 1 — Lagrange and spline interpolation\n")
+    print("Part 1 - Lagrange and spline interpolation\n")
 
     print("Data points:")
     for x, y in zip(x_data, y_data):
